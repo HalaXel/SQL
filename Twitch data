@@ -1,0 +1,81 @@
+-- Which twitch streamer had the highest number of views in one live stream?
+
+SELECT TOP 3
+Channel, [Peak viewers]
+FROM twitchdata
+ORDER BY [Peak viewers] DESC;
+
+
+	-- What was the top twitch average number of viewers? How much higher was it than the average number of average viewers across all channels? 
+
+
+SELECT TOP 1 Channel, [Average viewers]
+FROM twitchdata
+ORDER BY [Average viewers] DESC;
+
+SELECT AVG([Average viewers]) AS overall_average_viewers
+FROM twitchdata;
+
+
+	-- How many languages are there and which speaking language is most popular across all channels in this data set? 
+	
+SELECT COUNT( distinct [Language]) AS number_of_languages
+FROM twitchdata;
+
+SELECT TOP 5 Language, COUNT(*) AS language_count
+FROM twitchdata
+GROUP BY Language
+ORDER BY language_count DESC;
+
+	-- languages of the top 3 channels with the highest average viewers
+	
+SELECT TOP 3 channel, Language, [Average viewers]
+   FROM twitchdata
+ORDER BY [Average viewers] DESC;
+
+  -- What were the stream times for the top 3 streamers with the highest average viewers? 
+
+SELECT TOP 3 Channel, [Average viewers], [Stream time(minutes)]
+FROM twitchdata
+ORDER BY [Average viewers] DESC;
+
+
+ 	-- what were the stream times for the bottom 3 streamers with the lowest average viewers?
+
+SELECT TOP 3 Channel, [Average viewers], [Stream time(minutes)]
+FROM twitchdata
+ORDER BY [Average viewers] ASC;
+
+	-- What were the views like for the channels with the lowest stream time and is there a correlation between stream time and average viewers? 
+     How does the number of average  viewers for these channels with low stream times compare to the highest number of average viewers.
+		
+SELECT Channel, [Stream time(minutes)], [Average viewers],  
+(SELECT MAX([Average viewers]) AS highest from twitchdata), Followers
+FROM twitchdata
+ORDER BY [Stream time(minutes)] ASC;
+
+	 -- For the top 15 channels with the highest number of followers, what were their average viewer numbers like and how much lower were they than the highest average views?
+
+SELECT TOP 15 Channel, Followers, [Average viewers],
+(SELECT MAX([Average viewers]) AS highest_average_viewers FROM twitchdata)
+FROM twitchdata
+ORDER BY Followers DESC;
+
+
+	 -- How many followers do the top 15 streamers with the highest average viewers have? 
+
+SELECT TOP 15 Channel, Followers, [Average viewers]
+FROM twitchdata
+ORDER BY [Average viewers] DESC;
+	
+
+
+
+
+
+
+
+
+
+
+
