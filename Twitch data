@@ -1,4 +1,4 @@
--- Which twitch streamer had the highest number of views in one live stream?
+        -- Which twitch streamer had the highest number of views in one live stream?
 
 SELECT TOP 3
 Channel, [Peak viewers]
@@ -33,7 +33,7 @@ SELECT TOP 3 channel, Language, [Average viewers]
    FROM twitchdata
 ORDER BY [Average viewers] DESC;
 
-  -- What were the stream times for the top 3 streamers with the highest average viewers? 
+        -- What were the stream times for the top 3 streamers with the highest average viewers? 
 
 SELECT TOP 3 Channel, [Average viewers], [Stream time(minutes)]
 FROM twitchdata
@@ -68,6 +68,39 @@ SELECT TOP 15 Channel, Followers, [Average viewers]
 FROM twitchdata
 ORDER BY [Average viewers] DESC;
 	
+
+        -- Which channels were doing the best in terms of engagement? I will measure engagement as a percentage of average viewers from followers.
+        -- First, I will alter the datatype for the Follower and Average Viewers columns from INT to Decimal:
+
+ALTER table twitchdata
+ALTER column followers decimal (12,4);
+       
+ALTER table twitchdata
+ALTER column  [Average viewers] decimal (12,4);
+
+        -- Then, a select statement to calculate percentage:
+
+SELECT TOP 10 Channel, Followers, [Average viewers], [Average viewers]/Followers * 100 AS percentage 
+FROM twitchdata
+ORDER BY percentage DESC;
+
+
+      -- Which channels were and were not partnered?
+
+SELECT partnered, COUNT(*) AS count_of_channels
+FROM twitchdata 
+GROUP BY Partnered;
+
+     -- Does being partnered have an impact on Average viewers?
+
+SELECT partnered, COUNT(*) AS count_of_channels,
+AVG([Average viewers]) AS avg_average_viewers,
+MAX([Average viewers]) AS highest_average_viewers, 
+MIN([Average viewers]) AS lowest_average_viewers
+FROM twitchdata
+GROUP BY Partnered;
+
+
 
 
 
