@@ -1,0 +1,36 @@
+CREATE TABLE employees (
+employee_id INT PRIMARY KEY,
+first_name VARCHAR(40),
+last_name VARCHAR(40),
+job_title VARCHAR(40),
+employee_start_date DATE,
+office_code INT);
+
+INSERT INTO employees VALUES(1,'Genna','Davidson','data analyst','2021-04-09',4422);
+INSERT INTO employees VALUES(2,'Pearl','Watson','IT and Operations analyst','2017-03-12',4422);
+INSERT INTO employees VALUES(3,'John','Baker','Software Engineer','2020-04-08',4423);
+INSERT INTO employees VALUES(4,'Cindy','Gomez','data analyst','2020-05-01',4422);
+INSERT INTO employees VALUES(5,'Sarah','Ali','Financial analyst','2018-03-10',4422);
+INSERT INTO employees VALUES(6,'Adam','Henderson','Systems analyst','2021-02-02',4423);
+INSERT INTO employees VALUES(7,'Micheal','Williams','Business analyst','2017-04-12',4422);
+INSERT INTO employees VALUES(8,'Joseph','Williams','Chief executive officer','2021-04-06',4423);
+INSERT INTO employees VALUES(9,'Sally','Degli','Human resources','2017-10-12',4423);
+INSERT INTO employees VALUES(10,'Mona','Awad','Project manager','2018-01-08',4422);
+
+CREATE TABLE products (
+product_id INT PRIMARY KEY,
+product_name VARCHAR(40),
+unit_in_stock INT,
+unit_price INT);
+
+alter table products
+alter column unit_price DECIMAL(13,2);
+
+INSERT INTO products VALUES(123,'TouchTablet Lite',210,299.98);
+INSERT INTO products VALUES(124,'AutoVacuum Cleaner',98,894.98);
+INSERT INTO products VALUES(125,'Silver Airfryer',541,174.98);
+INSERT INTO products VALUES(126,'Touchscreen Calender',670,296.98);
+INSERT INTO products VALUES(127,'Air Purifier Silver',915,179.98);
+INSERT INTO products VALUES(128,'Air Purifier White',1024,179.98);
+INSERT INTO products VALUES(129,'Wireless Keyboard',437,55.00);
+INSERT INTO products VALUES(130,'Extension Lead',2042,10.98);
