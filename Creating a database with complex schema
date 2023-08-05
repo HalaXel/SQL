@@ -34,3 +34,24 @@ INSERT INTO products VALUES(127,'Air Purifier Silver',915,179.98);
 INSERT INTO products VALUES(128,'Air Purifier White',1024,179.98);
 INSERT INTO products VALUES(129,'Wireless Keyboard',437,55.00);
 INSERT INTO products VALUES(130,'Extension Lead',2042,10.98);
+
+CREATE TABLE salesorders (
+sales_order_id INT PRIMARY KEY,
+product_id INT FOREIGN KEY REFERENCES products(product_id),
+order_date DATE,
+status  VARCHAR(40),
+quantity_ordered INT,
+price_per_unit Decimal(13,2));
+
+INSERT INTO salesorders VALUES(10,123,'2021-09-20','shipped',2,299.98);
+INSERT INTO salesorders VALUES(11,130,'2021-09-23','shipped',15,10.98);
+INSERT INTO salesorders VALUES(12,130,'2022-03-04','shipped',10,10.98);
+INSERT INTO salesorders VALUES(13,127,'2022-04-15','shipped',3,179.98);
+INSERT INTO salesorders VALUES(14,125,'2023-01-25','shipped',1,174.98);
+INSERT INTO salesorders VALUES(15,130,'2023-06-17','shipped',1,10.98);
+INSERT INTO salesorders VALUES(16,130,'2023-02-23','shipped',15,10.98);
+INSERT INTO salesorders VALUES(17,124,'2023-02-11','shipped',1,894.98);
+INSERT INTO salesorders VALUES(18,129,'2022-07-15','shipped',3,55.00);
+INSERT INTO salesorders VALUES(19,128,'2021-10-06','shipped',1,179.98);
+INSERT INTO salesorders VALUES(20,126,'2022-12-14','shipped',2,296.98);
+
