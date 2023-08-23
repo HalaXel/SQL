@@ -1,3 +1,5 @@
+  -- Creating the employee, salesorders and products table and populating each table seperately
+
 CREATE TABLE employees (
 employee_id INT PRIMARY KEY,
 first_name VARCHAR(40),
@@ -54,4 +56,12 @@ INSERT INTO salesorders VALUES(17,124,'2023-02-11','shipped',1,894.98);
 INSERT INTO salesorders VALUES(18,129,'2022-07-15','shipped',3,55.00);
 INSERT INTO salesorders VALUES(19,128,'2021-10-06','shipped',1,179.98);
 INSERT INTO salesorders VALUES(20,126,'2022-12-14','shipped',2,296.98);
+
+  -- Using a left join to combine the salesorders table with the product_name column from the products tables
+
+SELECT s.*, p.product_name
+FROM salesorders AS s 
+LEFT JOIN products AS p ON p.product_id = s.product_id
+ORDER BY s.sales_order_id;
+
 
